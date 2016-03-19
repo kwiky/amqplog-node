@@ -12,6 +12,8 @@ module.exports = {
 
   connected: false,
 
+  connectionUri: null,
+
   channel: null,
 
   waitingLogs: [],
@@ -24,6 +26,7 @@ module.exports = {
     self.options.host = opts.host || 'localhost';
     self.options.port = opts.port || 5672;
 
+    self.options.authority = '';
     if (opts.user) {
       self.options.authority = opts.user;
       if (opts.user) {
@@ -32,13 +35,16 @@ module.exports = {
       self.options.authority += '@';
     }
 
+    self.options.vhost = '';
     if (opts.vhost) {
       self.options.vhost = '/' + opts.vhost;
     }
 
     self.options.retryDelay = opts.retryDelay || 5;
 
-    self.connected = amqp.connect('amqp://' + self.options.authority + self.options.host + ':' + self.options.port + self.options.vhost);
+    self.connectionUri = 'amqp://' + self.options.authority + self.options.host + ':' + self.options.port + self.options.vhost;
+
+    self.connected = amqp.connect(self.connectionUri);
 
     self.connected.then(function(conn) {
       var ok = conn.createChannel();
