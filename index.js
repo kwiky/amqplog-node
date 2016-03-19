@@ -30,7 +30,7 @@ module.exports = {
     if (opts.user) {
       self.options.authority = opts.user;
       if (opts.user) {
-        self.options.authority += opts.pass + ':';
+        self.options.authority += ':' + opts.pass;
       }
       self.options.authority += '@';
     }
