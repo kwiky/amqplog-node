@@ -1,5 +1,5 @@
 var opts = {
-  host: "192.168.99.100"
+  host: 'localhost'
 };
 
 var logger = require('../').connect(opts);
