@@ -1,0 +1,15 @@
+{
+  "name": "amqplog",
+  "version": "0.0.1",
+  "description": "A logger through amqp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Steve Grosbois <steve@grosbois.fr>",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "amqplib": "^0.4.1",
+    "moment": "^2.12.0"
+  }
+}
